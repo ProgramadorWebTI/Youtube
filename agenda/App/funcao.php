@@ -14,6 +14,21 @@ function selecionaAgenda() {
 
 }
 
+// ESTA FUNÇÃO SERVIRA PARA QUNADO FOR ATUALIZAR UM CONTATO PARA ANTES DE FAZER A ATUALIZAÇÃO, PUXAR O CONTATO PARA A EDIÇÃO
+
+function selecionaAgendaId($id) {
+    $sql = "SELECT * FROM contato WHERE con_codigo =?";
+    $stmt = pdo()->prepare($sql);
+    $stmt->bindValue(1, $id);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    } else {
+        return false;
+    }
+
+}
+
 //  CRIAR FUNÇÃO PARA INSERIR UM NOVO CONTATO NA AGENDA
 
 function inserirNovoContato() {
