@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "files": [
+            "App/Conexao.php",
+            "App/funcao.php",
+            "App/Bootstrap.php"
+        ]
+    }
+}
