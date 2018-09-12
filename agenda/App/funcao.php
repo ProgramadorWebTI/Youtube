@@ -7,7 +7,7 @@ function selecionaAgenda() {
     $stmt = pdo()->prepare($sql);
     $stmt->execute();
     if($stmt->rowCount() > 0) {
-        return $stmt->fetch(\PDO::FETCH_OBJ);
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     } else {
         return 0;
     }
