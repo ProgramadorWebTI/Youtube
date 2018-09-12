@@ -31,7 +31,7 @@ function selecionaAgendaId($id) {
 
 //  CRIAR FUNÇÃO PARA INSERIR UM NOVO CONTATO NA AGENDA
 
-function inserirNovoContato() {
+function inserirNovoContato($con_nome, $con_fone1, $con_fone2, $con_cel, $con_email) {
     $sql = "INSERT INTO contato (con_nome,con_fone1,con_fone2,con_cel,con_email) VALUES (?,?,?,?,?)";
     $stmt = pdo()->prepare($sql);
     $stmt->execute();
