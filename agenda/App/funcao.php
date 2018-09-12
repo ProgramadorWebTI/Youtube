@@ -34,6 +34,11 @@ function selecionaAgendaId($id) {
 function inserirNovoContato($con_nome, $con_fone1, $con_fone2, $con_cel, $con_email) {
     $sql = "INSERT INTO contato (con_nome,con_fone1,con_fone2,con_cel,con_email) VALUES (?,?,?,?,?)";
     $stmt = pdo()->prepare($sql);
+    $stmt->bindValue(1, $con_nome);
+    $stmt->bindValue(2, $con_fone1);
+    $stmt->bindValue(3, $con_fone2);
+    $stmt->bindValue(4, $con_cel);
+    $stmt->bindValue(5, $con_email);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         return 1;
