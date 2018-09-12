@@ -45,3 +45,17 @@ function editarContato($con_nome, $con_fone1, $con_fone2, $con_cel, $con_email, 
         return 0;
     }
 }
+
+// CRIAR FUNCAO DE DELETAR CONTATO
+
+function deletarContato($id) {
+    $sql = "DELETE FROM contato WHERE con_codigo=?";
+    $stmt = pdo()->prepare($sql);
+    $stmt->bindValue(1, $id);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
