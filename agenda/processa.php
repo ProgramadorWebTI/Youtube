@@ -52,7 +52,17 @@ if(isset($_GET['p'])) {
 					);
 				}
 			}
-			//header("location: index.php");
+			break;
+		case 'edita':
+			$id = trim($_GET['id']);
+
+		break;
+
+		case 'deleta':
+			$id = trim($_GET['id']);
+			if(deletarContato($id) == 1) {
+				header("location:".base_url('lista-contatos.php'));
+			}
 			break;
 		
 		default:
