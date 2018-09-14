@@ -12,9 +12,9 @@ $(document).ready(function () {
             data: dados,
             mimeType: "multipart/form-data",
             success: function (response) {
-                console.log(response);
                if(response.status == 1){                   
                    $(".resposta").text(response.msg);
+                  $(".fmCadastro input").val("");
                }
             }
         });
