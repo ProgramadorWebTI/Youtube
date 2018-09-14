@@ -54,7 +54,19 @@ if(isset($_GET['p'])) {
 			}
 			break;
 		case 'edita':
-			$id = trim($_GET['id']);
+			$con_codigo = trim($_POST['con_codigo']);
+			$con_nome = trim($_POST['con_nome']);
+			$con_fone1 = trim($_POST['con_fone1']);
+			$con_fone2 = trim($_POST['con_fone2']);
+			$con_cel = trim($_POST['con_cel']);
+			$con_email = trim($_POST['con_email']);
+
+			if(editarContato($con_nome, $con_fone1, $con_fone2, $con_cel, $con_email, $con_codigo)) {
+				echo json_encode(array(
+					"status" => 1,
+					"msg" => "Editado com sucesso"
+				));
+			}
 
 		break;
 
