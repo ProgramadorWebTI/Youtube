@@ -1,5 +1,30 @@
 <?php
 
+// CRIANDO FUNÇÃO PARA FAZER PESQUISA, FILTRAR;
+function pesquisaAgenda($text) {
+    $sql = "
+    SELECT * FROM contato 
+    WHERE (
+        contato.con_nome LIKE ? 
+        or contato.con_fone1 LIKE ? 
+        or contato.con_fone2 LIKE ?
+        or contato.con_cel LIKE ?
+        or contato.con_email LIKE ?
+        )";
+    $stmt = pdo()->prepare($sql);
+    $stmt->bindValue(1, '%'.$text.'%');
+    $stmt->bindValue(2, '%'.$text.'%');
+    $stmt->bindValue(3, '%'.$text.'%');
+    $stmt->bindValue(4, '%'.$text.'%');
+    $stmt->bindValue(5, '%'.$text.'%');
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    } else {
+        return 0;
+    }
+}
+
 // CRIAR A FUNÇÃO DE SELECIONA TODA AGENDA
 
 function selecionaAgenda() {
