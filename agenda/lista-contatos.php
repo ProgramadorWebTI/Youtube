@@ -51,6 +51,7 @@
                 
                 <table class="table">
                     <thead>
+                    <?php if(pesquisaAgenda($_POST['busca']) == 0 ) {echo "<h2 class='text-center'>Sem resultado</h2>"; exit;}?>
                         <tr>
                             <th>Nome</th>
                             <th>Telefone 1</th>
@@ -60,7 +61,6 @@
                             <th></th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php foreach(pesquisaAgenda($_POST['busca']) as $contato): ?>
                             <tr>
