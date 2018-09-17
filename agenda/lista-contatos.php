@@ -30,6 +30,63 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+<form action="lista-contatos.php?pesquisa=1" method="post" class="form-inline">
+    <div class="form-group">
+        <label for="busca" class="sr-only">busca</label>
+        <input type="text" class="form-control" id="busca" name="busca" placeholder="buscar" required>
+    </div>
+  <button type="submit" class="btn btn-primary">pesquisar</button>
+</form>
+ <br>
+
+<?php  
+ if(isset($_GET['pesquisa'])){
+ if($_GET['pesquisa'] == 1){
+?>
+ <div class="lista-contatos">
+                <div class="lista-contatos-header">
+                <div class="h1">Lista de contatos - busca</div>
+                </div>
+                <div class="lista-contatos-body">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone 1</th>
+                            <th>Telefone 2</th>
+                            <th>Celular</th>
+                            <th>E-mail</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach(pesquisaAgenda($_POST['busca']) as $contato): ?>
+                            <tr>
+                                <td><?= $contato->con_nome; ?></td>
+                                <td><?= $contato->con_fone1; ?></td>
+                                <td><?= $contato->con_fone2; ?></td>
+                                <td><?= $contato->con_cel; ?></td>
+                                <td><?= $contato->con_email; ?></td>
+                                <td>
+                                    <a href="<?=base_url('show-edita-contato.php');?>?id=<?= $contato->con_codigo; ?>&p=edita">
+                                    <span class="label label-warning">Edita</span>
+                                    </a>
+                                    <a href="<?= base_url('processa.php'); ?>?id=<?= $contato->con_codigo; ?>&p=deleta">
+                                    <span class="label label-danger">Deleta</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+
+                </table>
+
+                </div>
+            </div>
+
+<?php exit; }}?>
             <div class="lista-contatos">
                 <div class="lista-contatos-header">
                 <div class="h1">Lista de contatos</div>
