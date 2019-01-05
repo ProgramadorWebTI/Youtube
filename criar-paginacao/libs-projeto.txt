@@ -1,0 +1,72 @@
+# composer;
+
+# Conexao Simples com Banco de Dados;
+	@ ProgramadorWebTI
+	!link: https://github.com/ProgramadorWebTI/Youtube/blob/master/agenda/App/Conexao.php
+
+# bliblioteca para renderizar views;
+	@blade
+	Install: composer require jenssegers/blade
+	!link: https://packagist.org/packages/jenssegers/blade
+	* Utilização:
+		use Jenssegers\Blade\Blade;
+		$blade = new Blade('views', 'cache');
+		echo $blade->make('homepage', ['name' => 'John Doe']);
+
+# biblioteca para paginação;
+	@simple-pagination
+	Install: composer require ashleydawson/simple-pagination
+	!link: https://packagist.org/packages/ashleydawson/simple-pagination
+	* Utilizaçao:
+		use AshleyDawson\SimplePagination\Paginator;
+		// Build a mock list of items we want to paginate through
+		$items = array(
+		    'Banana',
+		    'Apple',
+		    'Cherry',
+		    'Lemon',
+		    'Pear',
+		    'Watermelon',
+		    'Orange',
+		    'Grapefruit',
+		    'Blackcurrant',
+		    'Dingleberry',
+		    'Snosberry',
+		    'Tomato',
+		);
+
+		// Instantiate a new paginator service
+		$paginator = new Paginator();
+
+		// Set some parameters (optional)
+		$paginator
+		    ->setItemsPerPage(10) // Give us a maximum of 10 items per page
+		    ->setPagesInRange(5) // How many pages to display in navigation (e.g. if we have a lot of pages to get through)
+		;
+
+		// Pass our item total callback
+		$paginator->setItemTotalCallback(function () use ($items) {
+		    return count($items);
+		});
+
+		// Pass our slice callback
+		$paginator->setSliceCallback(function ($offset, $length) use ($items) {
+		    return array_slice($items, $offset, $length);
+		});
+
+		// Paginate the item collection, passing the current page number (e.g. from the current request)
+		$pagination = $paginator->paginate((int) $_GET['page']);
+
+		// Ok, from here on is where we'd be inside a template of view (e.g. pass $pagination to your view)
+
+# Bootstrap 4
+	!link: https://getbootstrap.com/docs/4.2/getting-started/introduction/
+
+
+	# Code Start
+
+		$faker = Faker\Factory::create();
+		for ($i=0; $i < 1000; $i++) {
+			$conteudoInsert = "'".$faker->email."'";
+			print "INSERT INTO exemplos (conteudo) VALUES ($conteudoInsert);<br>";
+		}

@@ -1,0 +1,19 @@
+{
+    "require": {
+        "fzaninotto/faker": "^1.8",
+        "jenssegers/blade": "^1.1",
+        "ashleydawson/simple-pagination": "^1.0"
+    },
+    "autoload": {
+    	"files" : [
+    		"app/conexao.php",
+            "app/model_exemplo.php"
+    	]
+    },
+    "scripts" : {
+		"serve" : "php -S 192.168.1.5:9000"
+	},
+	"config": {
+        "process-timeout": 0
+    }
+}
