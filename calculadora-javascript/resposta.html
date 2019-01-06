@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<form id="form" accept-charset="utf-8">
+	<input type="text" name="n1" id="n1"> <br>
+	<input type="text" name="n2" id="n2"> <br>
+	<select name="operacao" id="operacao">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+	</select>
+	<button id="btn">calcular</button>
+</form>
+<div id="resposta"></div>
+<script type="text/javascript" charset="utf-8">
+	document.getElementById('btn').addEventListener("click", function(event){
+		event.preventDefault();
+		var n1 = document.getElementById('n1').value;
+		var n2 = document.getElementById('n2').value;
+		var operacao = document.getElementById('operacao').value;
+		var n1ParseInt = parseInt(n1);
+		var n2ParseInt = parseInt(n2);
+		document.getElementById('resposta').innerHTML = calcular(n1ParseInt,n2ParseInt,operacao);
+	});
+	function calcular(numero1,numero2,operacao) {
+		var response=0;
+		if(operacao == '+'){response = numero1 + numero2;}
+		else if (operacao == '-') {response = numero1 - numero2;}
+		else if (operacao == '*') {response = numero1 * numero2;}
+		else if (operacao == '/') {response = numero1 / numero2;}
+		return response;
+	}
+</script>
+</body>
+</html>
